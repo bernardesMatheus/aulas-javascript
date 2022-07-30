@@ -12,6 +12,6 @@ function retornaPalavraEncontrada(palavra, listaDePalavras){
             return true;
         }
     }
-
+    
     return false;
 }

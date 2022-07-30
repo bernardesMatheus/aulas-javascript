@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando a DOM</title>
+</head>
+
+<style>
+    .vermelho{
+        background-color: red;
+    }
+</style>
+
+<body>
+    <h1 class="azul" id="tituloPrincipal"></h1>
+    <p class="azul"></p>
+    <p id="paragrafoCustomizado"><strong>Parágrafo dois</strong></p>
+
+    <button class="btn"></button>
+
+    <script>
+        // Acessando os elementos da DOM
+
+        // getElementsByTagName - retorna todos os elementos que possuem a tag especificada no parâmetro (retorna HTML Collection);
+        // getElementById - retorna o elemento que possui o id passado pelo parâmetro;
+        // getElementsByClassName - retorna uma lista com elementos que possuem a classe especificada (retorna HTML Collection);
+        // querySelector - retorna o primeiro elemento que possui a propriedade identificada pelo parâmetro;
+        // querySelectorAll - retorna uma lista com todos os elementos que possuem a propriedade indicada pelo parâmetro (retorna uma NodeList)
+
+        const paragrafos = document.getElementsByTagName('p');
+        console.log(paragrafos);
+        paragrafos[0].innerHTML = "<i>Lorem ipsum dolor et</i>";
+
+        const tituloPagina = document.getElementById("tituloPrincipal");
+        tituloPagina.innerHTML = "Manipulando a DOM";
+
+        for(let p of paragrafos){
+            if(!p.id){
+                p.innerHTML = "Sou apenas um parágrafo genérico";
+            }
+        }
+
+        const btn = document.querySelector(".btn");
+        btn.innerHTML = "Botão";
+
+        // Adicionando estilos via Javascript;
+        btn.onclick = () => {
+            alert("Botão clicado");
+            btn.style.backgroundColor = "red";
+            btn.innerHTML = "Botão clicado!";
+            btn.style.color = "white";
+        }
+
+        // Vantagem do querySelectorAll;
+        const elementosAzuis = document.querySelectorAll(".azul");
+
+        elementosAzuis.forEach((e) => {
+            e.style.color = "blue";
+            e.innerHTML = e.innerHTML.toUpperCase();
+            //e.style.textTransform = "uppercase";
+        });
+
+        // Adicionando classes nos elementos HTML;
+        const paragrafoCustomizado = document.querySelector("#paragrafoCustomizado");
+        paragrafoCustomizado.classList.add("vermelho");
+
+        // Criando e adicionando novos elementos ao body;
+        const novoParagrafo = document.createElement('p');
+        novoParagrafo.innerHTML = "Paráfo criado via javascript";
+        document.body.appendChild(novoParagrafo);
+
+        const paragrafoAtrr = document.querySelector("#paragrafoCustomizado");
+        paragrafoAtrr.setAttribute("alt", "Texto alternativo adicionado");
+        paragrafoAtrr.setAttribute("id", "idJavascript");
+
+        // Removendo elementos da página;
+        paragrafoAtrr.remove();
+
+        // innerHTML / innerText;
+        tituloPagina.innerHTML = "<em>Título DOM</em>";
+        tituloPagina.innerText = "<em>Título DOM</em>";
+
+    </script>
+</body>
+</html>

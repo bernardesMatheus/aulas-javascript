@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+</head>
+<body onload="paginaCarregada()" >
+    <p id="paragrafo" onclick="clicado()" >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quia tempora distinctio ratione dolore ex iusto officiis quas. Perspiciatis labore impedit ut. Debitis est unde quaerat amet odio iusto. Dolore.</p>
+
+    <input id="inputTexto" type="text">
+
+    <script>
+        function paginaCarregada(){
+            console.log(document.getElementsByTagName("body"));
+        }
+
+        // function clicado(){
+        //     alert("Parágrafo clicado!");
+        // }
+
+        const input = document.getElementById("inputTexto");
+        input.addEventListener("keydown", (event) =>{
+            console.log(event.key);
+        });
+
+        function mouseIn(e){
+            e.target.style.textTransform = "uppercase";
+        }
+
+        function mouseOut(e){
+            e.target.style.textTransform = "lowercase";
+        }
+
+        const paragrafo = document.getElementById("paragrafo");
+        paragrafo.addEventListener("mouseover", mouseIn);
+        paragrafo.addEventListener("mouseout", mouseOut);
+
+        input.addEventListener("focus", mouseIn);
+        input.addEventListener("blur", mouseOut);
+    </script>
+</body>
+</html>
